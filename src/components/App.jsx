@@ -24,6 +24,12 @@ export default class App extends React.Component{
       name, 
       number};  
 
+      this.state.contacts.map(a => {
+        if(a.name.includes(name)){
+          window.alert(`${name} is already in contacts`)
+        }
+      }) 
+
       this.setState(({contacts}) =>({
       contacts:[formValue, ...contacts]
       }))
@@ -47,8 +53,9 @@ export default class App extends React.Component{
 
   
   render(){
-    const normalizedFilter = this.state.filter.toLowerCase();
-    const visibleContacts = this.state.contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter),);
+    const {filter, contacts} = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter),);
 
     return (
       <div className={s.container}>
@@ -56,7 +63,7 @@ export default class App extends React.Component{
           <Form formData={this.formSubmitHandler}/> 
         <div>
           <h2>Contacts</h2>
-            <Filter value={this.state.filter} onFilterChange={this.onFilterChange}/>
+            <Filter value={filter} onFilterChange={this.onFilterChange}/>
             <ContactsList contacts={visibleContacts} onDeleteContact={this.handleDeleteContact.bind(this)}/>   
         </div>
       </div>

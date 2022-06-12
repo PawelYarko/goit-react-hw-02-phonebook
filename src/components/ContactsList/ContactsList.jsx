@@ -1,4 +1,5 @@
 import React from 'react';
+import s from '../PhoneBook.module.css'
 
 
 const ContactsList = ({contacts, onDeleteContact}) =>{
@@ -6,9 +7,9 @@ const ContactsList = ({contacts, onDeleteContact}) =>{
     return (
         <ul>
             {contacts.map(({id, name, number})=> 
-            <li key={id}>
+            <li key={id} className={s.listItem}>
                 {name}: {number} 
-                <button type="button" onClick={() => onDeleteContact(id)}>
+                <button className={s.buttonDelete} type="button" onClick={() => onDeleteContact(id)}>
                     Delete
                 </button></li>)}
         </ul>
