@@ -1,5 +1,4 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import s from '../PhoneBook.module.css';
 
@@ -10,19 +9,18 @@ export default class Form extends React.Component{
       number: '',
     }  
   
-    
-    elemId = nanoid();
-  
+
     handleChange = (e) =>{
       const { name, value } = e.target;
       this.setState({ 
-        id: this.elemId,
         [name]: value });
     }
     
+
     onContactAdd = (e) =>{
       e.preventDefault();
-      this.props.formData(this.state);         
+      this.props.formData(this.state);
+      this.setState({name: '', number: ''})
     }
   
   
@@ -43,22 +41,22 @@ export default class Form extends React.Component{
                         required
                     />
                 </label>
-            <label className={s.number} htmlFor={this.elemId}>Number 
-              <input
-              id={this.elemId}
-                className={s.inputNumber}
-                type="tel"
-                name="number"
-                value={this.state.number}
-                onChange={this.handleChange}
-                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                required
-              />
-            </label>
-            
-            <button type="submit" className={s.button}>Add contact</button>
-          </form>
+                <label className={s.number} htmlFor={this.elemId}>Number 
+                  <input
+                    id={this.elemId}
+                    className={s.inputNumber}
+                    type="tel"
+                    name="number"
+                    value={this.state.number}
+                    onChange={this.handleChange}
+                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                    title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                    required
+                  />
+                </label>
+                
+                <button type="submit" className={s.button}>Add contact</button>
+              </form>
       )
     }
   }
