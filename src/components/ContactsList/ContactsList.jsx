@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../PhoneBook.module.css'
+import s from './Contacts.module.css'
 
 
 const ContactsList = ({contacts, onDeleteContact}) =>{

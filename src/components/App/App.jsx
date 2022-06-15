@@ -1,9 +1,9 @@
 import React from 'react';
-import Form from './Form/Form';
-import ContactsList from './ContactsList/ContactsList';
-import Filter from './Filter/Filter';
+import Form from '../Form/Form';
+import ContactsList from '../ContactsList/ContactsList';
+import Filter from '../Filter/Filter';
 import { nanoid } from 'nanoid';
-import s from './PhoneBook.module.css';
+import s from './App.module.css';
 
 
 export default class App extends React.Component{
